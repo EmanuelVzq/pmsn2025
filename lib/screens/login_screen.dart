@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,6 +12,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   TextEditingController conUser = TextEditingController();
   TextEditingController conPwd = TextEditingController();
+  bool isValidating=false;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * .3,
+                height: MediaQuery.of(context).size.height * .25,
                 decoration: BoxDecoration(
                   color: Colors.white70,
                   borderRadius: BorderRadius.circular(30)
@@ -70,11 +72,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     txtUser,
                     txtPwd,
                     IconButton(
-                      onPressed: (){}, 
+                      onPressed: (){
+                        isValidating = true;
+                        setState(() {
+                          print(isValidating);
+                        });
+                      }, 
                       icon: Icon(Icons.login, size: 40,))
                   ],
                 ),
               )
+            ),
+            Positioned(
+              bottom: 0.5,
+              child:isValidating ? Lottie.asset('loading2.json', height: 200):Container()
             )
           ],
         ),
