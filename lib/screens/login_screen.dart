@@ -74,9 +74,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     IconButton(
                       onPressed: (){
                         isValidating = true;
-                        setState(() {
-                          print(isValidating);
-                        });
+                        setState(() {});
+                        Future.delayed(Duration(milliseconds: 2000)).then(
+                          (value) => Navigator.pushNamed(context, "/home"),
+                        );
+                        
                       }, 
                       icon: Icon(Icons.login, size: 40,))
                   ],
