@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pmsn2025/screens/home_screen.dart';
 import 'package:pmsn2025/screens/login_screen.dart';
+import 'package:pmsn2025/utils/theme_app.dart';
+import 'package:pmsn2025/utils/value_listener.dart';
 
 void main() => runApp(const MyApp());
 
@@ -9,13 +11,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.light(),
-      routes: {
-        "/home" : (context) => HomeScreen()
-      },
-      title: 'Material App',
-      home: LoginScreen(),
+    return Builder(
+      builder: (context) {
+        return ValueListenableBuilder(
+          valueListenable: ValueListener.idDark,
+          builder: (context, value, _) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: value ? ThemeApp.darkTheme() : ThemeApp.lightTheme(),
+              routes: {
+            "/home" : (context) => HomeScreen()
+          
+          },
+          title: 'Material App',
+          home: LoginScreen(),
+            );
+            
+          },
+          
+        );
+      }
     );
   }
 }
+
+//siempre que se utiliza un builder va a regresar un widget esto si termina la palabra en builder
