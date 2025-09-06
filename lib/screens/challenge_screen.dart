@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pmsn2025/screens/tarjeta_equipo.dart';
+import 'package:pmsn2025/screens/tarjeta_modo.dart';
 
 class ChallengeScreen extends StatefulWidget {
   const ChallengeScreen({super.key});
@@ -9,6 +9,7 @@ class ChallengeScreen extends StatefulWidget {
 }
 
 class _ChallengeScreenState extends State<ChallengeScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,39 +63,46 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                   ],
                 ),
                 SizedBox(height: 30),
-                TarjetaEquipo(
-                  imagePath: 'realmadrid.png',
-                  titulo: 'REAL MADRID CF',
+                TarjetaModo(
+                  imagePath: 'img_gd/ship.png',
+                  titulo: 'SHIP',
+                  mode: GdMode.ship,
                 ),
                 SizedBox(height: 50),
-                TarjetaEquipo(
-                  imagePath: 'realmadrid.png',
-                  titulo: 'REAL MADRID CF',
+                TarjetaModo(
+                  imagePath: 'img_gd/ball.png',
+                  titulo: 'BALL',
+                  mode: GdMode.ball,
                 ),
                 SizedBox(height: 50),
-                TarjetaEquipo(
-                  imagePath: 'realmadrid.png',
-                  titulo: 'REAL MADRID CF',
+                TarjetaModo(
+                  imagePath: 'img_gd/ufo.png',
+                  titulo: 'UFO',
+                  mode: GdMode.ufo,
                 ),
                 SizedBox(height: 50),
-                TarjetaEquipo(
-                  imagePath: 'realmadrid.png',
-                  titulo: 'REAL MADRID CF',
+                TarjetaModo(
+                  imagePath: 'img_gd/wave.png',
+                  titulo: 'WAVE',
+                  mode: GdMode.wave,
                 ),
                 SizedBox(height: 50),
-                TarjetaEquipo(
-                  imagePath: 'realmadrid.png',
-                  titulo: 'REAL MADRID CF',
+                TarjetaModo(
+                  imagePath: 'img_gd/robot.png',
+                  titulo: 'ROBOT',
+                  mode: GdMode.robot,
                 ),
                 SizedBox(height: 50),
-                TarjetaEquipo(
-                  imagePath: 'realmadrid.png',
-                  titulo: 'REAL MADRID CF',
+                TarjetaModo(
+                  imagePath: 'img_gd/spider.png',
+                  titulo: 'SPIDER',
+                  mode: GdMode.spider,
                 ),
                 SizedBox(height: 50),
-                TarjetaEquipo(
-                  imagePath: 'realmadrid.png',
-                  titulo: 'REAL MADRID CF',
+                TarjetaModo(
+                  imagePath: 'img_gd/swingcopter.png',
+                  titulo: 'SWING COPTER',
+                  mode: GdMode.swing,
                 ),
               ],
             ),

@@ -85,6 +85,9 @@ flutter:
     - family: oxygene
       fonts:
         - asset: fonts\OXYGENE1.TTF
+    - family: grobold
+      fonts:
+        - asset: fonts\GROBOLD.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

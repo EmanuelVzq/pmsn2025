@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pmsn2025/screens/challenge_detail.dart';
 import 'package:pmsn2025/screens/home_screen.dart';
 import 'package:pmsn2025/screens/login_screen.dart';
 import 'package:pmsn2025/utils/theme_app.dart';
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: value ? ThemeApp.darkTheme() : ThemeApp.lightTheme(),
               routes: {
-            "/home" : (context) => HomeScreen()
+            "/home" : (context) => HomeScreen(),
+            "/challenge_detail":(context) => ChallengeDetail(),
           
           },
           title: 'Material App',
