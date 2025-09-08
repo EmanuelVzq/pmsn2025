@@ -20,7 +20,6 @@ class TarjetaModo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Capa 1
         Transform.translate(
           offset: const Offset(-30, 30),
           child: Transform(
@@ -39,7 +38,6 @@ class TarjetaModo extends StatelessWidget {
           ),
         ),
 
-        // Capa 2
         Transform.translate(
           offset: const Offset(-57, 27),
           child: Transform(
@@ -58,7 +56,6 @@ class TarjetaModo extends StatelessWidget {
           ),
         ),
 
-        // Imagen
         Padding(
           padding: const EdgeInsets.all(20.0),
           child: Hero(
@@ -67,7 +64,6 @@ class TarjetaModo extends StatelessWidget {
           ),
         ),
 
-        // Texto
         Padding(
           padding: const EdgeInsets.only(left: 230, top: 70),
           child: Stack(
@@ -84,7 +80,7 @@ class TarjetaModo extends StatelessWidget {
                     ..color = Colors.black, // color del contorno
                 ),
               ),
-              // Relleno
+              
               Text(
                 titulo,
                 style: const TextStyle(
@@ -97,7 +93,6 @@ class TarjetaModo extends StatelessWidget {
           ),
         ),
 
-        // button
         Padding(
           padding: const EdgeInsets.only(left: 370, top: 150),
           child: ElevatedButton.icon(
@@ -105,7 +100,7 @@ class TarjetaModo extends StatelessWidget {
               /*Navigator.pushNamed(
                 context,
                 '/challenge_detail',
-                arguments: mode, // 👈 pasas el modo
+                arguments: mode, 
               );*/
               Navigator.of(context).push(
                 MaterialPageRoute(
@@ -116,15 +111,15 @@ class TarjetaModo extends StatelessWidget {
             },
             label: Icon(
               Icons.arrow_forward,
-              color: Colors.black, // color del icono
+              color: Colors.black, 
             ),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white, // color de fondo
-              foregroundColor: Colors.black, // color al presionar
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.black, 
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12), // bordes redondeados
+                borderRadius: BorderRadius.circular(12), 
               ),
-              elevation: 5, // sombra
+              elevation: 5, 
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             ),
           ),

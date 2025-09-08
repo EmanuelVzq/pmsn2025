@@ -34,7 +34,6 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                 Stack(
                   alignment: Alignment.center,
                   children: [
-                    // Contorno negro
                     Text(
                       'GEOMETRY DASH',
                       style: TextStyle(
@@ -46,7 +45,6 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                           ..color = Colors.black,
                       ),
                     ),
-                    // Relleno verde ARGB
                     Text(
                       'GEOMETRY DASH',
                       style: TextStyle(
@@ -57,7 +55,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                           102,
                           255,
                           51,
-                        ), // Verde estilo Geometry Dash
+                        ), 
                       ),
                     ),
                   ],

@@ -54,7 +54,24 @@ class ChallengeDetail extends StatelessWidget {
       case GdMode.ball:
         title = 'BALL';
         description =
-            'El jugador controla una nave que sube o baja al mantener o soltar la pantalla.\n Se basa en precisión de vuelo y cambios de gravedad en espacios estrechos.';
+            'El jugador controla una modo de juego en donde al dar clic se cambia de gravedad.\n Se basa en precisión para dar el clic en el momento correcto.';
+        backgroundEffect = Transform.translate(
+          offset: const Offset(-30, 30),
+          child: Transform(
+            alignment: FractionalOffset.center,
+            transform: Matrix4.identity()
+              ..setEntry(3, 2, 0.1)
+              ..rotateY(0.5 * (pi / 180)),
+            child: Container(
+              height: 180,
+              margin: const EdgeInsets.symmetric(horizontal: 40),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(22),
+              ),
+            ),
+          ),
+        );
         asset = 'img_gd/ball.png';
         asset2 = "img_gd/gd_ball.PNG";
         gradient = const LinearGradient(
@@ -70,6 +87,23 @@ class ChallengeDetail extends StatelessWidget {
         title = 'UFO';
         description =
           'El jugador controla una nave que sube o baja al mantener o soltar la pantalla.\n Se basa en precisión de vuelo y cambios de gravedad en espacios estrechos.';
+        backgroundEffect = Transform.translate(
+          offset: const Offset(-30, 30),
+          child: Transform(
+            alignment: FractionalOffset.center,
+            transform: Matrix4.identity()
+              ..setEntry(3, 2, 0.1)
+              ..rotateY(0.5 * (pi / 180)),
+            child: Container(
+              height: 180,
+              margin: const EdgeInsets.symmetric(horizontal: 40),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(22),
+              ),
+            ),
+          ),
+        );
         asset = 'img_gd/ufo.png';
         asset2 = "img_gd/gd_ufo.PNG";
         gradient = const LinearGradient(
@@ -85,6 +119,23 @@ class ChallengeDetail extends StatelessWidget {
         title = 'WAVE';
         description =
           'El jugador controla una nave que sube o baja al mantener o soltar la pantalla.\n Se basa en precisión de vuelo y cambios de gravedad en espacios estrechos.';
+        backgroundEffect = Transform.translate(
+          offset: const Offset(-30, 30),
+          child: Transform(
+            alignment: FractionalOffset.center,
+            transform: Matrix4.identity()
+              ..setEntry(3, 2, 0.1)
+              ..rotateY(0.5 * (pi / 180)),
+            child: Container(
+              height: 180,
+              margin: const EdgeInsets.symmetric(horizontal: 40),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(22),
+              ),
+            ),
+          ),
+        );
         asset = 'img_gd/wave.png';
         asset2 = "img_gd/gd_wave.PNG";
         gradient = const LinearGradient(
@@ -100,6 +151,23 @@ class ChallengeDetail extends StatelessWidget {
         title = 'ROBOT';
         description =
           'El jugador controla una nave que sube o baja al mantener o soltar la pantalla.\n Se basa en precisión de vuelo y cambios de gravedad en espacios estrechos.';
+        backgroundEffect = Transform.translate(
+          offset: const Offset(-30, 30),
+          child: Transform(
+            alignment: FractionalOffset.center,
+            transform: Matrix4.identity()
+              ..setEntry(3, 2, 0.1)
+              ..rotateY(0.5 * (pi / 180)),
+            child: Container(
+              height: 180,
+              margin: const EdgeInsets.symmetric(horizontal: 40),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(22),
+              ),
+            ),
+          ),
+        );
         asset = 'img_gd/robot.png';
         asset2 = "img_gd/gd_robot.PNG";
         gradient = const LinearGradient(
@@ -115,6 +183,23 @@ class ChallengeDetail extends StatelessWidget {
         title = 'SPIDER';
         description =
           'El jugador controla una nave que sube o baja al mantener o soltar la pantalla.\n Se basa en precisión de vuelo y cambios de gravedad en espacios estrechos.';
+        backgroundEffect = Transform.translate(
+          offset: const Offset(-30, 30),
+          child: Transform(
+            alignment: FractionalOffset.center,
+            transform: Matrix4.identity()
+              ..setEntry(3, 2, 0.1)
+              ..rotateY(0.5 * (pi / 180)),
+            child: Container(
+              height: 180,
+              margin: const EdgeInsets.symmetric(horizontal: 40),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(22),
+              ),
+            ),
+          ),
+        );
         asset = 'img_gd/spider.png';
         asset2 = "img_gd/gd_spider.PNG";
         gradient = const LinearGradient(
@@ -130,6 +215,23 @@ class ChallengeDetail extends StatelessWidget {
         title = 'SWING COPTER';
         description =
           'El jugador controla una nave que sube o baja al mantener o soltar la pantalla.\n Se basa en precisión de vuelo y cambios de gravedad en espacios estrechos.';
+        backgroundEffect = Transform.translate(
+          offset: const Offset(-30, 30),
+          child: Transform(
+            alignment: FractionalOffset.center,
+            transform: Matrix4.identity()
+              ..setEntry(3, 2, 0.1)
+              ..rotateY(0.5 * (pi / 180)),
+            child: Container(
+              height: 180,
+              margin: const EdgeInsets.symmetric(horizontal: 40),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(22),
+              ),
+            ),
+          ),
+        );
         asset = 'img_gd/swingcopter.png';
         asset2 = "img_gd/gd_swing.PNG";
         gradient = const LinearGradient(
@@ -156,48 +258,54 @@ class ChallengeDetail extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(title)),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: gradient, // 👈 degradado dinámico
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  backgroundEffect,
-                  Hero(
-                    tag: mode,
-                    child: Center(child: Image.asset(asset, height: 240)),
+      body: SingleChildScrollView(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+            gradient: gradient, 
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                Stack(
+                  children: [
+                    backgroundEffect,
+                    Hero(
+                      tag: mode,
+                      child: Center(
+                          child: Image.asset(asset, height: 240)
+                        )
+                      
+                    ),
+                  ],
+                ),
+        
+                const SizedBox(height: 16),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Color.fromRGBO(250, 250, 250, 0.298),
+                    borderRadius: BorderRadius.circular(15)
                   ),
-                ],
-              ),
-
-              const SizedBox(height: 16),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color.fromRGBO(255, 255, 255, 0.3)
-                ),
-                child: Text(
-                  description,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    color: Color.fromARGB(255, 0, 0, 0), // contraste con fondo
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Roboto',
+                  child: Text(
+                    description,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      color: Color.fromARGB(255, 0, 0, 0), 
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Roboto',
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
-              ),
-              if (asset2.isNotEmpty)
-                Padding(
-                  padding: const EdgeInsets.only(top: 36),
-                  child: Image.asset(asset2, height: 200, fit: BoxFit.contain),
-                ),
-            ],
+                if (asset2.isNotEmpty)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 36),
+                    child: Image.asset(asset2, height: 200, fit: BoxFit.contain),
+                  ),
+              ],
+            ),
           ),
         ),
       ),
