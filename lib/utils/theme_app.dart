@@ -11,8 +11,8 @@ class ThemeApp {
           onSecondary: Colors.redAccent, 
           error: Colors.red, 
           onError: Colors.red, 
-          surface: Colors.orange, 
-          onSurface: Colors.green
+          surface: const Color.fromARGB(255, 0, 0, 0), 
+          onSurface: const Color.fromARGB(255, 255, 255, 255)
         )
       );
       return theme;
