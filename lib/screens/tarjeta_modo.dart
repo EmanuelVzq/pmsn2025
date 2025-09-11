@@ -26,9 +26,9 @@ class TarjetaModo extends StatelessWidget {
             alignment: FractionalOffset.center,
             transform: Matrix4.identity()
               ..setEntry(3, 2, 0.1)
-              ..rotateY(0.5 * (pi / 180)),
+              ..rotateY(0.4 * (pi / 180)),
             child: Container(
-              height: 180,
+              height: 150,
               margin: const EdgeInsets.symmetric(horizontal: 40),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.2),
@@ -44,9 +44,9 @@ class TarjetaModo extends StatelessWidget {
             alignment: FractionalOffset.center,
             transform: Matrix4.identity()
               ..setEntry(3, 2, 0.1)
-              ..rotateY(0.8 * (pi / 180)),
+              ..rotateY(1 * (pi / 180)),
             child: Container(
-              height: 188,
+              height: 158,
               margin: const EdgeInsets.symmetric(horizontal: 40),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.1),
@@ -57,15 +57,15 @@ class TarjetaModo extends StatelessWidget {
         ),
 
         Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(25.0),
           child: Hero(
             tag: mode, 
-            child: Image.asset(imagePath, height: 200)
+            child: Image.asset(imagePath, height: 150)
           ),
         ),
 
         Padding(
-          padding: const EdgeInsets.only(left: 230, top: 70),
+          padding: const EdgeInsets.only(left: 160, top: 70),
           child: Stack(
             children: [
               // Contorno (stroke)
@@ -94,7 +94,7 @@ class TarjetaModo extends StatelessWidget {
         ),
 
         Padding(
-          padding: const EdgeInsets.only(left: 370, top: 150),
+          padding: const EdgeInsets.only(left: 270, top: 150),
           child: ElevatedButton.icon(
             onPressed: () {
               /*Navigator.pushNamed(

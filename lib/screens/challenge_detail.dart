@@ -27,10 +27,10 @@ class ChallengeDetail extends StatelessWidget {
           child: Transform(
             alignment: FractionalOffset.center,
             transform: Matrix4.identity()
-              ..setEntry(3, 2, 0.1)
+              ..setEntry(3, 2, 0.2)
               ..rotateY(0.5 * (pi / 180)),
             child: Container(
-              height: 180,
+              height: 150,
               margin: const EdgeInsets.symmetric(horizontal: 40),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.2),
@@ -39,8 +39,8 @@ class ChallengeDetail extends StatelessWidget {
             ),
           ),
         );
-        asset = 'img_gd/ship.png';
-        asset2 = "img_gd/gd_ship.PNG";
+        asset = 'assets/ship.png';
+        asset2 = "assets/gd_ship.PNG";
         gradient = const LinearGradient(
           colors: [
             Color.fromARGB(255, 252, 96, 231),
@@ -60,10 +60,10 @@ class ChallengeDetail extends StatelessWidget {
           child: Transform(
             alignment: FractionalOffset.center,
             transform: Matrix4.identity()
-              ..setEntry(3, 2, 0.1)
+              ..setEntry(3, 2, 0.2)
               ..rotateY(0.5 * (pi / 180)),
             child: Container(
-              height: 180,
+              height: 150,
               margin: const EdgeInsets.symmetric(horizontal: 40),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.2),
@@ -72,8 +72,8 @@ class ChallengeDetail extends StatelessWidget {
             ),
           ),
         );
-        asset = 'img_gd/ball.png';
-        asset2 = "img_gd/gd_ball.PNG";
+        asset = 'assets/ball.png';
+        asset2 = "assets/gd_ball.PNG";
         gradient = const LinearGradient(
           colors: [
             Color.fromARGB(255, 231, 47, 47),
@@ -92,10 +92,10 @@ class ChallengeDetail extends StatelessWidget {
           child: Transform(
             alignment: FractionalOffset.center,
             transform: Matrix4.identity()
-              ..setEntry(3, 2, 0.1)
+              ..setEntry(3, 2, 0.2)
               ..rotateY(0.5 * (pi / 180)),
             child: Container(
-              height: 180,
+              height: 150,
               margin: const EdgeInsets.symmetric(horizontal: 40),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.2),
@@ -104,8 +104,8 @@ class ChallengeDetail extends StatelessWidget {
             ),
           ),
         );
-        asset = 'img_gd/ufo.png';
-        asset2 = "img_gd/gd_ufo.PNG";
+        asset = 'assets/ufo.png';
+        asset2 = "assets/gd_ufo.PNG";
         gradient = const LinearGradient(
           colors: [
             Color.fromARGB(255, 236, 129, 7),
@@ -124,10 +124,10 @@ class ChallengeDetail extends StatelessWidget {
           child: Transform(
             alignment: FractionalOffset.center,
             transform: Matrix4.identity()
-              ..setEntry(3, 2, 0.1)
+              ..setEntry(3, 2, 0.2)
               ..rotateY(0.5 * (pi / 180)),
             child: Container(
-              height: 180,
+              height: 150,
               margin: const EdgeInsets.symmetric(horizontal: 40),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.2),
@@ -136,8 +136,8 @@ class ChallengeDetail extends StatelessWidget {
             ),
           ),
         );
-        asset = 'img_gd/wave.png';
-        asset2 = "img_gd/gd_wave.PNG";
+        asset = 'assets/wave.png';
+        asset2 = "assets/gd_wave.PNG";
         gradient = const LinearGradient(
           colors: [
             Color.fromARGB(255, 0, 199, 189),
@@ -156,10 +156,10 @@ class ChallengeDetail extends StatelessWidget {
           child: Transform(
             alignment: FractionalOffset.center,
             transform: Matrix4.identity()
-              ..setEntry(3, 2, 0.1)
+              ..setEntry(3, 2, 0.2)
               ..rotateY(0.5 * (pi / 180)),
             child: Container(
-              height: 180,
+              height: 150,
               margin: const EdgeInsets.symmetric(horizontal: 40),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.2),
@@ -168,8 +168,8 @@ class ChallengeDetail extends StatelessWidget {
             ),
           ),
         );
-        asset = 'img_gd/robot.png';
-        asset2 = "img_gd/gd_robot.PNG";
+        asset = 'assets/robot.png';
+        asset2 = "assets/gd_robot.PNG";
         gradient = const LinearGradient(
           colors: [
             Color.fromARGB(255, 136, 141, 143),
@@ -188,10 +188,10 @@ class ChallengeDetail extends StatelessWidget {
           child: Transform(
             alignment: FractionalOffset.center,
             transform: Matrix4.identity()
-              ..setEntry(3, 2, 0.1)
+              ..setEntry(3, 2, 0.2)
               ..rotateY(0.5 * (pi / 180)),
             child: Container(
-              height: 180,
+              height: 150,
               margin: const EdgeInsets.symmetric(horizontal: 40),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.2),
@@ -200,8 +200,8 @@ class ChallengeDetail extends StatelessWidget {
             ),
           ),
         );
-        asset = 'img_gd/spider.png';
-        asset2 = "img_gd/gd_spider.PNG";
+        asset = 'assets/spider.png';
+        asset2 = "assets/gd_spider.PNG";
         gradient = const LinearGradient(
           colors: [
             Color.fromARGB(255, 173, 30, 161),
@@ -220,10 +220,10 @@ class ChallengeDetail extends StatelessWidget {
           child: Transform(
             alignment: FractionalOffset.center,
             transform: Matrix4.identity()
-              ..setEntry(3, 2, 0.1)
+              ..setEntry(3, 2, 0.2)
               ..rotateY(0.5 * (pi / 180)),
             child: Container(
-              height: 180,
+              height: 150,
               margin: const EdgeInsets.symmetric(horizontal: 40),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.2),
@@ -232,8 +232,8 @@ class ChallengeDetail extends StatelessWidget {
             ),
           ),
         );
-        asset = 'img_gd/swingcopter.png';
-        asset2 = "img_gd/gd_swing.PNG";
+        asset = 'assets/swingcopter.png';
+        asset2 = "assets/gd_swing.PNG";
         gradient = const LinearGradient(
           colors: [
             Color.fromARGB(255, 155, 153, 76),
@@ -248,7 +248,7 @@ class ChallengeDetail extends StatelessWidget {
         description = Text(
           'El jugador controla una nave que sube o baja al mantener o soltar la pantalla.\n Se basa en precisión de vuelo y cambios de gravedad en espacios estrechos.',
         ).toString();
-        asset = 'img_gd/ship.png';
+        asset = 'ship.png';
         gradient = const LinearGradient(
           colors: [Colors.blue, Colors.indigo],
           begin: Alignment.topCenter,
@@ -275,14 +275,14 @@ class ChallengeDetail extends StatelessWidget {
                     Hero(
                       tag: mode,
                       child: Center(
-                          child: Image.asset(asset, height: 240)
+                          child: Image.asset(asset, height: 200)
                         )
                       
                     ),
                   ],
                 ),
         
-                const SizedBox(height: 16),
+                const SizedBox(height: 70),
                 Container(
                   decoration: BoxDecoration(
                     color: Color.fromRGBO(250, 250, 250, 0.298),

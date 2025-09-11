@@ -29,13 +29,13 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
               ),
             ),
             child: ListView(
-              padding: const EdgeInsets.only(top: 20, bottom: 100),
+              padding: const EdgeInsets.only(top: 20, bottom: 170),
               children: [
                 Stack(
                   alignment: Alignment.center,
                   children: [
                     Text(
-                      'GEOMETRY DASH',
+                      'GEOMETRY \n DASH',
                       style: TextStyle(
                         fontFamily: 'oxygene',
                         fontSize: 50,
@@ -46,7 +46,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                       ),
                     ),
                     Text(
-                      'GEOMETRY DASH',
+                      'GEOMETRY \n DASH',
                       style: TextStyle(
                         fontFamily: 'oxygene',
                         fontSize: 50,
@@ -62,43 +62,43 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                 ),
                 SizedBox(height: 30),
                 TarjetaModo(
-                  imagePath: 'img_gd/ship.png',
+                  imagePath: 'assets/ship.png',
                   titulo: 'SHIP',
                   mode: GdMode.ship,
                 ),
                 SizedBox(height: 50),
                 TarjetaModo(
-                  imagePath: 'img_gd/ball.png',
+                  imagePath: 'assets/ball.png',
                   titulo: 'BALL',
                   mode: GdMode.ball,
                 ),
                 SizedBox(height: 50),
                 TarjetaModo(
-                  imagePath: 'img_gd/ufo.png',
+                  imagePath: 'assets/ufo.png',
                   titulo: 'UFO',
                   mode: GdMode.ufo,
                 ),
                 SizedBox(height: 50),
                 TarjetaModo(
-                  imagePath: 'img_gd/wave.png',
+                  imagePath: 'assets/wave.png',
                   titulo: 'WAVE',
                   mode: GdMode.wave,
                 ),
                 SizedBox(height: 50),
                 TarjetaModo(
-                  imagePath: 'img_gd/robot.png',
+                  imagePath: 'assets/robot.png',
                   titulo: 'ROBOT',
                   mode: GdMode.robot,
                 ),
                 SizedBox(height: 50),
                 TarjetaModo(
-                  imagePath: 'img_gd/spider.png',
+                  imagePath: 'assets/spider.png',
                   titulo: 'SPIDER',
                   mode: GdMode.spider,
                 ),
                 SizedBox(height: 50),
                 TarjetaModo(
-                  imagePath: 'img_gd/swingcopter.png',
+                  imagePath: 'assets/swingcopter.png',
                   titulo: 'SWING COPTER',
                   mode: GdMode.swing,
                 ),

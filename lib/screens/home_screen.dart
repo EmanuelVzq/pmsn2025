@@ -123,11 +123,11 @@ class _HomeScreenState extends State<HomeScreen>
                 currentPage == 0 ? colors[0] : unselectedColor,
               ),
               _tabIcon(
-                Icons.search,
+                Icons.games_outlined,
                 currentPage == 1 ? colors[1] : unselectedColor,
               ),
               _tabIcon(
-                Icons.favorite,
+                Icons.person,
                 currentPage == 2 ? colors[2] : unselectedColor,
               ),
               _tabIcon(
