@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Positioned(
               top: 170,
               child: Text(
-                'Night',
+                'Bienvenido',
                 style: TextStyle(
                   color: Colors.white,
                   fontFamily: 'EA',

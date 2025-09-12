@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:pmsn2025/screens/home_screen.dart';
 
 class LoginScreen2 extends StatefulWidget {
   const LoginScreen2({super.key});
@@ -14,7 +15,7 @@ class _LoginScreen2State extends State<LoginScreen2> {
   TextEditingController conEmail = TextEditingController();
   TextEditingController conPwd = TextEditingController();
 
-  File? _image; // Guardará la foto seleccionada o tomada
+  File? _image;
   final ImagePicker _picker = ImagePicker();
 
   // Método para abrir galería o cámara
@@ -90,7 +91,7 @@ class _LoginScreen2State extends State<LoginScreen2> {
             children: [
               const SizedBox(height: 10),
               const Text(
-                "Iniciar Sesión",
+                "Bienvenido",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 22,
@@ -99,17 +100,18 @@ class _LoginScreen2State extends State<LoginScreen2> {
               ),
               const SizedBox(height: 20),
 
-              // Avatar con botón editar
               Stack(
                 alignment: Alignment.bottomRight,
                 children: [
                   CircleAvatar(
                     radius: 50,
-                    backgroundImage:
-                        _image != null ? FileImage(_image!) : null,
+                    backgroundImage: _image != null ? FileImage(_image!) : null,
                     child: _image == null
-                        ? const Icon(Icons.person,
-                            size: 50, color: Colors.white)
+                        ? const Icon(
+                            Icons.person,
+                            size: 50,
+                            color: Colors.white,
+                          )
                         : null,
                   ),
                   Container(
@@ -119,14 +121,13 @@ class _LoginScreen2State extends State<LoginScreen2> {
                     ),
                     child: IconButton(
                       onPressed: () {
-                        // Mostrar opciones galería o cámara
                         showModalBottomSheet(
                           context: context,
                           builder: (context) => Wrap(
                             children: [
                               ListTile(
                                 leading: const Icon(Icons.photo),
-                                title: const Text("Galería"),
+                                title: const Text("Galeria"),
                                 onTap: () {
                                   Navigator.pop(context);
                                   _pickImage(ImageSource.gallery);
@@ -134,7 +135,7 @@ class _LoginScreen2State extends State<LoginScreen2> {
                               ),
                               ListTile(
                                 leading: const Icon(Icons.camera_alt),
-                                title: const Text("Cámara"),
+                                title: const Text("Camara"),
                                 onTap: () {
                                   Navigator.pop(context);
                                   _pickImage(ImageSource.camera);
@@ -168,14 +169,52 @@ class _LoginScreen2State extends State<LoginScreen2> {
 
               const SizedBox(height: 20),
 
-              // Botón Sign Up
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.25,
+                width: MediaQuery.of(context).size.width * 0.35,
                 child: ElevatedButton(
                   onPressed: () {
-                    debugPrint("Usuario: ${conUser.text}");
-                    debugPrint("Email: ${conEmail.text}");
-                    debugPrint("Password: ${conPwd.text}");
+                    String user = conUser.text.trim();
+                    String email = conEmail.text.trim();
+                    String pwd = conPwd.text.trim();
+
+                    RegExp emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',);
+
+                    if (user.isEmpty || email.isEmpty || pwd.isEmpty) {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: const Text("Atención"),
+                          content: const Text("Todos los campos son obligatorios",),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: const Text("OK"),
+                            ),
+                          ],
+                        ),
+                      );
+                    } else if (!emailRegExp.hasMatch(email)) {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: const Text("Error"),
+                          content: const Text("El correo electrónico no es valido",),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: const Text("OK"),
+                            ),
+                          ],
+                        ),
+                      );
+                    } else {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreen(),
+                        ),
+                      );
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
@@ -185,11 +224,12 @@ class _LoginScreen2State extends State<LoginScreen2> {
                     padding: const EdgeInsets.symmetric(vertical: 15),
                   ),
                   child: const Text(
-                    "Sign Up",
+                    "Iniciar Sesión",
                     style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),

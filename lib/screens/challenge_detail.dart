@@ -54,7 +54,7 @@ class ChallengeDetail extends StatelessWidget {
       case GdMode.ball:
         title = 'BALL';
         description =
-            'El jugador controla una modo de juego en donde al dar clic se cambia de gravedad.\n Se basa en precisión para dar el clic en el momento correcto.';
+            'El jugador controla un modo de juego en donde al dar clic se cambia de gravedad.\n Se basa en precisión para dar el clic en el momento correcto.';
         backgroundEffect = Transform.translate(
           offset: const Offset(-30, 30),
           child: Transform(
@@ -86,7 +86,7 @@ class ChallengeDetail extends StatelessWidget {
       case GdMode.ufo:
         title = 'UFO';
         description =
-          'El jugador controla una nave que sube o baja al mantener o soltar la pantalla.\n Se basa en precisión de vuelo y cambios de gravedad en espacios estrechos.';
+          'El jugador controla un modo de juego en donde la precision en los clics es funamental para lograr esquivar los obstaculos.';
         backgroundEffect = Transform.translate(
           offset: const Offset(-30, 30),
           child: Transform(
@@ -118,7 +118,7 @@ class ChallengeDetail extends StatelessWidget {
       case GdMode.wave:
         title = 'WAVE';
         description =
-          'El jugador controla una nave que sube o baja al mantener o soltar la pantalla.\n Se basa en precisión de vuelo y cambios de gravedad en espacios estrechos.';
+          'El jugador controla un vehiculo en donde al dejar presionado este sube y si dejas de presionar baja hay que tener buena coordinacion para controlarlo.';
         backgroundEffect = Transform.translate(
           offset: const Offset(-30, 30),
           child: Transform(
@@ -150,7 +150,7 @@ class ChallengeDetail extends StatelessWidget {
       case GdMode.robot:
         title = 'ROBOT';
         description =
-          'El jugador controla una nave que sube o baja al mantener o soltar la pantalla.\n Se basa en precisión de vuelo y cambios de gravedad en espacios estrechos.';
+          'El jugador controla un robot en donde al dejar presionado este salta mas hay que ser precisos y tener un dominio del timing.';
         backgroundEffect = Transform.translate(
           offset: const Offset(-30, 30),
           child: Transform(
@@ -182,7 +182,7 @@ class ChallengeDetail extends StatelessWidget {
       case GdMode.spider:
         title = 'SPIDER';
         description =
-          'El jugador controla una nave que sube o baja al mantener o soltar la pantalla.\n Se basa en precisión de vuelo y cambios de gravedad en espacios estrechos.';
+          'El jugador controla un vehiculo en donde cada clic es un cambio de gravedad instantaneo hay que tener buena coordinacion y vista para manejarlo.';
         backgroundEffect = Transform.translate(
           offset: const Offset(-30, 30),
           child: Transform(
@@ -214,7 +214,7 @@ class ChallengeDetail extends StatelessWidget {
       case GdMode.swing:
         title = 'SWING COPTER';
         description =
-          'El jugador controla una nave que sube o baja al mantener o soltar la pantalla.\n Se basa en precisión de vuelo y cambios de gravedad en espacios estrechos.';
+          'El jugador controla una nave dependiendo los clics que se den este hara curvas y cambios de gravedad hay que tener buena cordinacion y memoria.';
         backgroundEffect = Transform.translate(
           offset: const Offset(-30, 30),
           child: Transform(
