@@ -18,7 +18,6 @@ class _LoginScreen2State extends State<LoginScreen2> {
   File? _image;
   final ImagePicker _picker = ImagePicker();
 
-  // Método para abrir galería o cámara
   Future<void> _pickImage(ImageSource source) async {
     final pickedFile = await _picker.pickImage(source: source);
 

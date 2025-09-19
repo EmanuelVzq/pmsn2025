@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_floating_bottom_bar/flutter_floating_bottom_bar.dart';
 import 'package:pmsn2025/screens/challenge_screen.dart';
+import 'package:pmsn2025/screens/home_screen_food.dart';
 import 'package:pmsn2025/utils/value_listener.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -105,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen>
             children: [
               _page(controller, colors[0], 'Inicio'),
               ChallengeScreen(),
-              _page(controller, colors[2], 'Favoritos'),
+              HomeScreenFood(),
               _page(controller, colors[3], 'Ajustes'),
             ],
           ),
@@ -127,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen>
                 currentPage == 1 ? colors[1] : unselectedColor,
               ),
               _tabIcon(
-                Icons.person,
+                Icons.food_bank,
                 currentPage == 2 ? colors[2] : unselectedColor,
               ),
               _tabIcon(
