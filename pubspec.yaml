@@ -92,6 +92,9 @@ flutter:
     - family: grobold
       fonts:
         - asset: fonts\GROBOLD.ttf
+    - family: Anja
+      fonts:
+        - asset: fonts\Anja Eliane accent002.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

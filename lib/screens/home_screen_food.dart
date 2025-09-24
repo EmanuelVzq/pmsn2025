@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:pmsn2025/screens/home_screen_food2.dart';
 
 class HomeScreenFood extends StatefulWidget {
   const HomeScreenFood({super.key});
@@ -120,13 +121,15 @@ class _HomeScreenFoodState extends State<HomeScreenFood> {
                                 ),
                                 children: [
                                   TextSpan(
-                                    text: page["title"]!
-                                        .replaceAll(page["highlight"]!, "").trimRight()+" ",
+                                    text:
+                                        page["title"]!
+                                            .replaceAll(page["highlight"]!, "")
+                                            .trimRight() +
+                                        " ",
                                   ),
                                   TextSpan(
                                     text: page["highlight"]!,
-                                    style:
-                                        const TextStyle(color: Colors.amber),
+                                    style: const TextStyle(color: Colors.amber),
                                   ),
                                 ],
                               ),
@@ -161,6 +164,12 @@ class _HomeScreenFoodState extends State<HomeScreenFood> {
                       onPressed: () {
                         if (_currentPage == _pages.length - 1) {
                           print("Get Started!");
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomeScreenFood2(),
+                            ),
+                          );
                         } else {
                           _controller.nextPage(
                             duration: const Duration(milliseconds: 400),
@@ -180,7 +189,14 @@ class _HomeScreenFoodState extends State<HomeScreenFood> {
                   const SizedBox(height: 10),
 
                   TextButton(
-                    onPressed: () => print("Skip pressed"),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreenFood2(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       "SKIP",
                       style: TextStyle(color: Colors.amber),

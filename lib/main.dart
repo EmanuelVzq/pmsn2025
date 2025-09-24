@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pmsn2025/screens/challenge_detail.dart';
 import 'package:pmsn2025/screens/home_screen.dart';
 import 'package:pmsn2025/screens/home_screen_food.dart';
+import 'package:pmsn2025/screens/home_screen_food2.dart';
 import 'package:pmsn2025/screens/login_screen.dart';
 import 'package:pmsn2025/screens/login_screen2.dart';
 import 'package:pmsn2025/utils/theme_app.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
             "/challenge_detail":(context) => ChallengeDetail(),
             "/login_screen2" : (context) => LoginScreen2(),
             "/home_screen_food" : (context) => HomeScreenFood(),
+            "/home_screen_food2" : (context) => HomeScreenFood2(),
           
           },
           title: 'Material App',
