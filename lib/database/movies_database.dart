@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
+import 'package:pmsn2025/models/movie_dao.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -53,9 +54,11 @@ class MoviesDatabase {
      return con!.delete(table, where: 'idMovie = ?',whereArgs: [id]);
   }
 
-  SELECT(){
-    
-  }
+  Future<List<MovieDao>> SELECT() async {
+      var con = await database;
+      final res = await con!.query("tblMovies");
+      return res.map((movie) =>  MovieDao.fromMap(movie),).toList();
+    }
 }
 //guion bajo es indicar que la variable es de tipo privada
 //se realiza un getter para poder obtener la conexion si no hay alguna la generamos manualmente

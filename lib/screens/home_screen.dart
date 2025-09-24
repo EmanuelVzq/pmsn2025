@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_floating_bottom_bar/flutter_floating_bottom_bar.dart';
+import 'package:pmsn2025/models/movie_dao.dart';
 import 'package:pmsn2025/screens/challenge_screen.dart';
 import 'package:pmsn2025/screens/home_screen_food.dart';
+import 'package:pmsn2025/screens/list_movies.dart';
 import 'package:pmsn2025/utils/value_listener.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -107,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen>
               _page(controller, colors[0], 'Inicio'),
               ChallengeScreen(),
               HomeScreenFood(),
-              _page(controller, colors[3], 'Ajustes'),
+              ListMovies(),
             ],
           ),
           // ---- Contenido de la barra (tu navegación) ----
@@ -132,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen>
                 currentPage == 2 ? colors[2] : unselectedColor,
               ),
               _tabIcon(
-                Icons.settings,
+                Icons.movie,
                 currentPage == 3 ? colors[3] : unselectedColor,
               ),
             ],

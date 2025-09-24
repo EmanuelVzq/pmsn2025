@@ -3,6 +3,7 @@ import 'package:pmsn2025/screens/challenge_detail.dart';
 import 'package:pmsn2025/screens/home_screen.dart';
 import 'package:pmsn2025/screens/home_screen_food.dart';
 import 'package:pmsn2025/screens/home_screen_food2.dart';
+import 'package:pmsn2025/screens/list_movies.dart';
 import 'package:pmsn2025/screens/login_screen.dart';
 import 'package:pmsn2025/screens/login_screen2.dart';
 import 'package:pmsn2025/utils/theme_app.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
             "/login_screen2" : (context) => LoginScreen2(),
             "/home_screen_food" : (context) => HomeScreenFood(),
             "/home_screen_food2" : (context) => HomeScreenFood2(),
+            "/listdb": (context) => ListMovies(),
           
           },
           title: 'Material App',
