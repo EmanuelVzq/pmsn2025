@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pmsn2025/screens/add_movie_screen.dart';
 import 'package:pmsn2025/screens/challenge_detail.dart';
 import 'package:pmsn2025/screens/home_screen.dart';
 import 'package:pmsn2025/screens/home_screen_food.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
             "/home_screen_food" : (context) => HomeScreenFood(),
             "/home_screen_food2" : (context) => HomeScreenFood2(),
             "/listdb": (context) => ListMovies(),
+            "/add": (context) => AddMovieScreen(),
           
           },
           title: 'Material App',

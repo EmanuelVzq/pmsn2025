@@ -28,8 +28,8 @@ class ThemeApp {
           onSecondary: Colors.pink, 
           error: Colors.purple, 
           onError: Colors.purpleAccent, 
-          surface: Colors.greenAccent, 
-          onSurface: Colors.grey
+          surface: const Color.fromARGB(255, 154, 181, 255), 
+          onSurface: const Color.fromARGB(255, 0, 0, 0)
         )
       );
       return theme;

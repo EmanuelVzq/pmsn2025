@@ -9,7 +9,6 @@ class ListMovies extends StatefulWidget {
 }
 
 class _ListMoviesState extends State<ListMovies> {
-
   MoviesDatabase? moviesDB;
 
   @override
@@ -22,27 +21,52 @@ class _ListMoviesState extends State<ListMovies> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Lista de peliculas'),
+        title: const Text('Lista de peliculas'),
+        actions: [
+          IconButton(
+            onPressed: (){
+              Navigator.pushNamed(context, '/add').then((value)=> setState(() {}));
+            }, 
+            icon: Icon(Icons.add)
+          ),
+        ],
       ),
       body: FutureBuilder(
-        future: moviesDB!.SELECT(), 
+        future: moviesDB!.SELECT(),
         builder: (context, snapshot) {
-          if(snapshot.hasError){
-            return Center(child: Text('Something was wrong!'),);
+          if (snapshot.hasError) {
+            return const Center(
+              child: Text('Something was wrong!'),
+            );
           } else {
-            if(snapshot.hasData){
-              return ListView.builder(
-                itemBuilder: (context, index) {
-                  final objM = snapshot.data![index];
-                  return Container(
-                    height: 100,
-                    color: Colors.black,
-                    child: Text(objM.nameMovie!),
-                  );
-                },
+            if (snapshot.hasData) {
+              return snapshot.data!.isNotEmpty
+                  ? ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        final objM = snapshot.data![index];
+                        return Container(
+                          height: 100,
+                          color: Colors.black,
+                          alignment: Alignment.centerLeft,
+                          padding: const EdgeInsets.all(10),
+                          child: Text(
+                            objM.nameMovie!,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                        );
+                      },
+                    )
+                  : const Center(
+                      child: Text('No existen registros'),
+                    );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
               );
-            } else{
-              return Center(child: CircularProgressIndicator());
             }
           }
         },
@@ -50,4 +74,3 @@ class _ListMoviesState extends State<ListMovies> {
     );
   }
 }
-//un builder en escencia te regresa un widget a partir de un Future
