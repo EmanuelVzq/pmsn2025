@@ -36,13 +36,40 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
       backgroundColor: const Color.fromARGB(255, 230, 230, 230),
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'My Cart',
           style: TextStyle(fontFamily: 'Anja', color: Colors.black),
         ),
         backgroundColor: const Color.fromARGB(255, 230, 230, 230),
-        iconTheme: const IconThemeData(color: Colors.black),
+        leading: Container(
+          margin: const EdgeInsets.all(8),
+          decoration: const BoxDecoration(
+            color: Colors.orange,
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
+          child: IconButton(
+            icon: const Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ),
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 8),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
+            child: IconButton(
+              icon: const Icon(Icons.more_vert, color: Colors.black),
+              onPressed: () {
+                // acción al presionar
+                print("Carrito presionado");
+              },
+            ),
+          ),
+        ],
       ),
+
       body: ListView.builder(
         padding: const EdgeInsets.all(15),
         itemCount: foodItems.length,
@@ -63,19 +90,18 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                       ),
                     );
                   },
-                  backgroundColor:
-                      Colors.transparent, 
+                  backgroundColor: Colors.transparent,
                   child: Container(
                     width: 50,
                     height: 50,
                     decoration: const BoxDecoration(
                       color: Colors.black,
-                      borderRadius: BorderRadius.all(Radius.circular(10))
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
                     ),
                     child: const Icon(
                       Icons.close,
                       color: Colors.white,
-                      size: 28, // 👈 tamaño de la X
+                      size: 28,
                     ),
                   ),
                 ),
@@ -97,7 +123,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
               ),
               child: Row(
                 children: [
-                  // Imagen circular
                   ClipOval(
                     child: Image.asset(
                       item["image"],
@@ -108,7 +133,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                   ),
                   const SizedBox(width: 15),
 
-                  // Info
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,7 +166,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                     ),
                   ),
 
-                  // Precio
                   Text(
                     "\$${item["price"]}",
                     style: const TextStyle(
@@ -156,6 +179,121 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
             ),
           );
         },
+      ),
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: const BoxDecoration(
+          color: Colors.black87,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Indicador arrastre
+            Container(
+              width: 40,
+              height: 4,
+              decoration: BoxDecoration(
+                color: Colors.orange,
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+            const SizedBox(height: 20),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  "Shipping cost",
+                  style: TextStyle(color: Colors.white70, fontSize: 14),
+                ),
+                Text(
+                  "\$10.00",
+                  style: TextStyle(color: Colors.white, fontSize: 14),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  "Subtotal",
+                  style: TextStyle(color: Colors.white70, fontSize: 14),
+                ),
+                Text(
+                  "\$22.00",
+                  style: TextStyle(color: Colors.white, fontSize: 14),
+                ),
+              ],
+            ),
+
+            const Divider(color: Colors.white24, thickness: 1, height: 25),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  "Total",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  "\$32.00",
+                  style: TextStyle(
+                    color: Colors.orange,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white24),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: const [
+                  Icon(Icons.check_circle, color: Colors.white70),
+                  SizedBox(width: 10),
+                  Text(
+                    "Add promo code",
+                    style: TextStyle(color: Colors.white70),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.orange,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                minimumSize: const Size(double.infinity, 50),
+              ),
+              child: const Text(
+                "Checkout",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Anja',
+                  fontSize: 20,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
