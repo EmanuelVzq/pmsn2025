@@ -113,13 +113,13 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                   },
                 ),
                 ListTile(
-                  leading: const Icon(Icons.person, color: Colors.black),
+                  leading: const Icon(Icons.shopping_cart, color: Colors.black),
                   title: const Text(
-                    "Perfil",
+                    "Carrito",
                     style: TextStyle(color: Colors.black),
                   ),
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.pushNamed(context, "/cart");
                   },
                 ),
               ],

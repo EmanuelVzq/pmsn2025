@@ -8,6 +8,7 @@ import 'package:pmsn2025/screens/home_screen_food2.dart';
 import 'package:pmsn2025/screens/list_movies.dart';
 import 'package:pmsn2025/screens/login_screen.dart';
 import 'package:pmsn2025/screens/login_screen2.dart';
+import 'package:pmsn2025/screens/shopping_cart_screen.dart';
 import 'package:pmsn2025/utils/theme_app.dart';
 import 'package:pmsn2025/utils/value_listener.dart';
 
@@ -35,6 +36,8 @@ class MyApp extends StatelessWidget {
             "/home_screen_food2" : (context) => HomeScreenFood2(),
             "/listdb": (context) => ListMovies(),
             "/add": (context) => AddMovieScreen(),
+            "/cart": (context) => ShoppingCartScreen(),
+
           
           },
           title: 'Material App',
