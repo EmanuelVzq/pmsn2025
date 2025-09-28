@@ -49,8 +49,35 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
     },
   ];
 
+  final List<Map<String, dynamic>> food_card2 = [
+    {
+      "name": "Noodles",
+      "image": "assets/ball.png",
+      "price": "20.00",
+      "rating": "4.3",
+    },
+    {
+      "name": "Kabab",
+      "image": "assets/ball.png",
+      "price": "10.00",
+      "rating": "4.3",
+    },
+    {
+      "name": "French Fries",
+      "image": "assets/ball.png",
+      "price": "8.00",
+      "rating": "4.2",
+    },
+    {
+      "name": "Chicken Wings",
+      "image": "assets/ball.png",
+      "price": "15.00",
+      "rating": "4.5",
+    },
+  ];
+
   int selectedIndex = 0;
-  int selectedFoodIndex = 0; 
+  int selectedFoodIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -277,7 +304,7 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                           Center(
                             child: ClipOval(
                               child: Image.asset(
-                                food_card[index]["image"], 
+                                food_card[index]["image"],
                                 width: 100,
                                 height: 100,
                                 fit: BoxFit.cover,
@@ -353,6 +380,108 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                           ),
                         ],
                       ),
+                    ),
+                  );
+                }),
+              ),
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.all(15.0),
+            child: Text(
+              'Upcoming food',
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: List.generate(food_card.length, (index) {
+                  return Container(
+                    margin: const EdgeInsets.only(right: 15),
+                    width: 200, // ancho fijo para cada tarjeta
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.2),
+                          blurRadius: 6,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      children: [
+                        // Imagen circular
+                        ClipOval(
+                          child: Image.asset(
+                            food_card2[index]["image"],
+                            width: 60,
+                            height: 60,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+
+                        // Nombre, Rating y Precio
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // Nombre
+                              Text(
+                                food_card2[index]["name"],
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+
+                              // Rating
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.star,
+                                    color: Colors.black,
+                                    size: 16,
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    food_card2[index]["rating"],
+                                    style: const TextStyle(
+                                      fontSize: 13,
+                                      color: Colors.black54,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 6),
+
+                              // Precio
+                              Text(
+                                "\$${food_card2[index]["price"]}",
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.orange,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   );
                 }),

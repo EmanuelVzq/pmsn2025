@@ -37,7 +37,6 @@ class _HomeScreenFoodState extends State<HomeScreenFood> {
     return Scaffold(
       body: Stack(
         children: [
-          /// Fondo con imagen
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
@@ -55,7 +54,7 @@ class _HomeScreenFoodState extends State<HomeScreenFood> {
           ),
 
           Padding(
-            padding: const EdgeInsets.all(5.0),
+            padding: const EdgeInsets.all(30.0),
             child: Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.5,
@@ -69,7 +68,7 @@ class _HomeScreenFoodState extends State<HomeScreenFood> {
           ),
 
           Padding(
-            padding: const EdgeInsets.only(top: 345),
+            padding: const EdgeInsets.only(top: 445),
             child: Container(
               width: MediaQuery.of(context).size.width,
               height: 350,
