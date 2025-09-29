@@ -50,12 +50,28 @@ class _ListMoviesState extends State<ListMovies> {
                           color: Colors.black,
                           alignment: Alignment.centerLeft,
                           padding: const EdgeInsets.all(10),
-                          child: Text(
-                            objM.nameMovie!,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                            ),
+                          child: Column(
+                            children: [
+                              Text(objM.nameMovie!),
+                              Row(
+                                children: [
+                                  IconButton(
+                                    onPressed: (){}, 
+                                    icon: Icon(Icons.edit)
+                                  ),
+                                  Expanded(child: Container()),
+                                  IconButton(
+                                  onPressed: () async{
+                                    return showDialog(
+                                      context: context, 
+                                      builder: (context) => _buildAlertDialog(),
+                                    );
+                                  }, 
+                                  icon: Icon(Icons.delete))
+                                ],
+                              )
+                            ]
+                            ,
                           ),
                         );
                       },
@@ -71,6 +87,25 @@ class _ListMoviesState extends State<ListMovies> {
           }
         },
       ),
+    );
+  }
+
+  Widget _buildAlertDialog(){
+    return AlertDialog(
+      title: Text('Atencion'),
+      content: Text('¿Deseas eliminar el registro?'),
+      actions: [
+        TextButton(
+          onPressed: (){}, 
+          child: Text('Aceptar')
+        ),
+        TextButton(
+          onPressed: (){
+            Navigator.pop(context);
+          }, 
+          child: Text('Cancelar', style: TextStyle(color: Colors.red),)
+        ),
+      ],
     );
   }
 }

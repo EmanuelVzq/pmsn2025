@@ -11,48 +11,62 @@ class AddMovieScreen extends StatefulWidget {
 class _AddMovieScreenState extends State<AddMovieScreen> {
   MoviesDatabase? movieDB;
   DateTime selectedDate = DateTime.now();
+
   TextEditingController conTitle = TextEditingController();
   TextEditingController conTime = TextEditingController();
   TextEditingController conRelease = TextEditingController();
-  @override
+
   @override
   void initState() {
     super.initState();
-    super.initState();
     movieDB = MoviesDatabase();
+    conRelease.text = selectedDate.toString().substring(0, 10); // fecha inicial
   }
 
+  @override
   Widget build(BuildContext context) {
-
-    conRelease.text = selectedDate.toString();
     final txtTitle = TextFormField(
       controller: conTitle,
-      decoration: InputDecoration(hintText: 'Titulo de la pelicula'),
+      decoration: const InputDecoration(hintText: 'Título de la película'),
     );
+
     final txtTime = TextFormField(
       controller: conTime,
-      decoration: InputDecoration(hintText: 'Duracion de la pelicula'),
+      decoration: const InputDecoration(hintText: 'Duración de la película'),
     );
+
     final txtRelease = TextFormField(
       controller: conRelease,
+      readOnly: true,
       onTap: () => _selectedDate(context),
-      decoration: InputDecoration(hintText: 'Fecha de lanzamiento'),
+      decoration: const InputDecoration(hintText: 'Fecha de lanzamiento'),
     );
+
     final btnGuardar = ElevatedButton(
       onPressed: () {
-        movieDB!.INSERT("tblMovies", {
-          "nameMovie": conTitle.text,
-          "time": conTime.text,
-          "dateRelease": conRelease,
-        }).then((value)=>Navigator.pop(context),);
-      }, 
-      child: Text('Guardar'));
+        if (conTitle.text.isNotEmpty && conTime.text.isNotEmpty) {
+          movieDB!.INSERT("tblMovies", {
+            "nameMovie": conTitle.text,
+            "time": conTime.text,
+            "dateRelease": conRelease.text,
+          }).then((value) => Navigator.pop(context));
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Todos los campos son obligatorios")),
+          );
+        }
+      },
+      child: const Text('Guardar'),
+    );
 
     return Scaffold(
-      appBar: AppBar(title: Text('Insertar pelicula')),
-      body: ListView(
-        shrinkWrap: true,
-        children: [txtTitle, txtTime, txtRelease, btnGuardar],
+      appBar: AppBar(title: const Text('Insertar película')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView(
+          shrinkWrap: true,
+          children: [txtTitle, txtTime, txtRelease, const SizedBox(height: 20), btnGuardar],
+        ),
       ),
     );
   }
@@ -67,9 +81,11 @@ class _AddMovieScreenState extends State<AddMovieScreen> {
     if (picket != null && picket != selectedDate) {
       setState(() {
         selectedDate = picket;
+        conRelease.text = selectedDate.toString().substring(0, 10); // actualiza el texto
       });
     }
   }
 }
+
 
 //todas las solicitudes de bases de datos y apis se hacen en segundo plano por lo que se usa statefulwidget
