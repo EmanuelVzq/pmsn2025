@@ -274,7 +274,9 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
             const SizedBox(height: 20),
 
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, "/checkout");
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.orange,
                 shape: RoundedRectangleBorder(
