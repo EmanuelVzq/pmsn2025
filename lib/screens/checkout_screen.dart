@@ -257,9 +257,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(15.0),
         child: ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, "/checkout");
-          },
+          onPressed: () {},
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.amber,
             shape: RoundedRectangleBorder(
