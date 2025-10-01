@@ -19,32 +19,32 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
     {
       "name": "Peperoni Pizza",
       "description": "Delicious pizza of every person",
-      "image": "assets/ball.png",
-      "calories": "88 Calories",
+      "image": "assets/pepperoni_pizza.jpeg",
+      "calories": "88",
       "price": "10.00",
     },
 
     {
-      "name": "Peperoni Pizza",
-      "description": "Delicious pizza of every person",
-      "image": "assets/ball.png",
-      "calories": "88 Calories",
+      "name": "Mexican Burguer",
+      "description": "Mexican style",
+      "image": "assets/mexican_burger.jpg",
+      "calories": "88",
       "price": "10.00",
     },
 
     {
-      "name": "Peperoni Pizza",
-      "description": "Delicious pizza of every person",
-      "image": "assets/ball.png",
-      "calories": "88 Calories",
+      "name": "Hot Dog",
+      "description": "Chilo dog",
+      "image": "assets/chili_dog.jpg",
+      "calories": "88",
       "price": "10.00",
     },
 
     {
-      "name": "Peperoni Pizza",
-      "description": "Delicious pizza of every person",
-      "image": "assets/ball.png",
-      "calories": "88 Calories",
+      "name": "Ice Cream",
+      "description": "Delicious ice cream",
+      "image": "assets/ice_cream.jpg",
+      "calories": "88",
       "price": "10.00",
     },
   ];
@@ -52,25 +52,25 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
   final List<Map<String, dynamic>> food_card2 = [
     {
       "name": "Noodles",
-      "image": "assets/ball.png",
+      "image": "assets/noodles.jpg",
       "price": "20.00",
       "rating": "4.3",
     },
     {
       "name": "Kabab",
-      "image": "assets/ball.png",
+      "image": "assets/kebab.jpg",
       "price": "10.00",
       "rating": "4.3",
     },
     {
       "name": "French Fries",
-      "image": "assets/ball.png",
+      "image": "assets/french_fries.jpg",
       "price": "8.00",
       "rating": "4.2",
     },
     {
       "name": "Chicken Wings",
-      "image": "assets/ball.png",
+      "image": "assets/chicken_wings.jpg",
       "price": "15.00",
       "rating": "4.5",
     },
@@ -202,14 +202,7 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                       decoration: BoxDecoration(
                         color: isSelected ? Colors.orange : Colors.white,
                         borderRadius: BorderRadius.circular(50),
-                        boxShadow: [
-                          if (isSelected)
-                            BoxShadow(
-                              color: Colors.orange.withOpacity(0.5),
-                              blurRadius: 10,
-                              offset: const Offset(0, 5),
-                            ),
-                        ],
+                        
                       ),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -224,8 +217,7 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                                     height: 50,
                                     decoration: const BoxDecoration(
                                       color: Colors.white,
-                                      shape: BoxShape
-                                          .circle, // 👈 lo hace circular
+                                      shape: BoxShape.circle,
                                     ),
                                   ),
                                 ),
@@ -288,7 +280,7 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(
                           20,
-                        ), // esquinas redondeadas
+                        ), 
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.2),
@@ -300,20 +292,6 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Imagen circular
-                          Center(
-                            child: ClipOval(
-                              child: Image.asset(
-                                food_card[index]["image"],
-                                width: 100,
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-
-                          // Nombre
                           Text(
                             food_card[index]["name"],
                             style: const TextStyle(
@@ -322,8 +300,7 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                               color: Colors.black,
                             ),
                           ),
-
-                          // Descripción
+                          SizedBox(height: 10,),
                           Text(
                             food_card[index]["description"],
                             style: TextStyle(
@@ -333,7 +310,22 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                           ),
                           const SizedBox(height: 8),
 
-                          // Calorías
+                          Center(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25)
+                              ),
+                              child: Image.asset(
+                                food_card[index]["image"],
+                                width: 150,
+                                height: 100,
+                                //fit: BoxFit.cover,
+                                
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+
                           Row(
                             children: [
                               const Icon(
@@ -362,16 +354,17 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                                 style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
+                                  color: Colors.black
                                 ),
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                  color: Colors.orange,
-                                  shape: BoxShape.circle,
+                                  color: Colors.amber,
+                                  borderRadius: BorderRadius.circular(10)
                                 ),
                                 padding: const EdgeInsets.all(8),
                                 child: const Icon(
-                                  Icons.favorite_border,
+                                  Icons.favorite,
                                   color: Colors.black,
                                   size: 18,
                                 ),

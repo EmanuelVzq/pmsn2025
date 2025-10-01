@@ -12,23 +12,25 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
   List<Map<String, dynamic>> foodItems = [
     {
       "name": "Mexican Cheese",
-      "image": "assets/ball.png",
+      "image": "assets/pepperoni_pizza.jpeg",
       "calories": "88",
       "price": "20.00",
     },
     {
       "name": "Beef Burger",
-      "image": "assets/ball.png",
+      "image": "assets/mexican_burger.jpg",
       "calories": "96",
       "price": "10.00",
     },
     {
-      "name": "Beef Steak",
-      "image": "assets/ball.png",
+      "name": "Kebab",
+      "image": "assets/kebab.jpg",
       "calories": "120",
       "price": "15.00",
     },
   ];
+
+  int cont = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +46,15 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
         leading: Container(
           margin: const EdgeInsets.all(8),
           decoration: const BoxDecoration(
-            color: Colors.orange,
+            color: Colors.amber,
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
-          child: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => Navigator.pop(context),
+          child: Padding(
+            padding: EdgeInsetsGeometry.fromLTRB(5, 0, 10, 5),
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
+              onPressed: () => Navigator.pop(context),
+            ),
           ),
         ),
         actions: [
@@ -142,6 +147,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
                         ),
                         const SizedBox(height: 4),
@@ -162,17 +168,87 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                             ),
                           ],
                         ),
+                        SizedBox(height: 8),
+                        Row(
+                          children: [
+                            // Botón menos
+                            Container(
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(
+                                Icons.arrow_left,
+                                color: Colors.black,
+                                size: 35,
+                              ),
+                            ),
+                            SizedBox(width: 8),
+
+                            // Número
+                            Text(
+                              "03",
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                            SizedBox(width: 8),
+
+                            Container(
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(
+                                Icons.arrow_right,
+                                color: Colors.amber,
+                                size: 35,
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
 
-                  Text(
-                    "\$${item["price"]}",
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.orange,
-                    ),
+                  Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.amber,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        padding: const EdgeInsets.all(8),
+                        child: const Icon(
+                          Icons.favorite,
+                          color: Colors.black,
+                          size: 18,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Row(
+                        children: [
+                          Text(
+                            "\$",
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.orange,
+                            ),
+                          ),
+                          Text(
+                            item["price"],
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -245,7 +321,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                 Text(
                   "\$32.00",
                   style: TextStyle(
-                    color: Colors.orange,
+                    color: Colors.amber,
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
@@ -278,7 +354,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                 Navigator.pushNamed(context, "/checkout");
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.orange,
+                backgroundColor: Colors.amber,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),

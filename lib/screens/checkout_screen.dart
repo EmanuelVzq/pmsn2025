@@ -23,17 +23,17 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
   final List<Map<String, dynamic>> pay = [
     {
-      "image": "assets/ball.png",
+      "image": "assets/paypal.png",
       "name": "Paypal",
       "number": "564* **** **** ***0 89 ",
     },
     {
-      "image": "assets/ball.png",
+      "image": "assets/credit_card.png",
       "name": "Credit Card",
       "number": "564* **** **** ***0 89 ",
     },
     {
-      "image": "assets/ball.png",
+      "image": "assets/debit_card.png",
       "name": "Debit Card",
       "number": "564* **** **** ***0 89 ",
     },
@@ -56,12 +56,15 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         leading: Container(
           margin: const EdgeInsets.all(8),
           decoration: const BoxDecoration(
-            color: Colors.orange,
+            color: Colors.amber,
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
-          child: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => Navigator.pop(context),
+          child: Padding(
+            padding: EdgeInsetsGeometry.fromLTRB(5, 0, 10, 5),
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
+              onPressed: () => Navigator.pop(context),
+            ),
           ),
         ),
         actions: [
@@ -125,28 +128,36 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                 color: Colors.black,
                               ),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Text(
                               location[index]["street"],
-                              style: TextStyle(
-                                color: const Color.fromARGB(255, 185, 185, 185),
+                              style: const TextStyle(
+                                color: Color.fromARGB(255, 172, 172, 172),
                               ),
                             ),
-                            SizedBox(height: 5),
+                            const SizedBox(height: 5),
                             Text(
                               location[index]["aditional"],
-                              style: TextStyle(
-                                color: const Color.fromARGB(255, 185, 185, 185),
+                              style: const TextStyle(
+                                color: Color.fromARGB(255, 172, 172, 172),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      IconButton(
-                        icon: const Icon(Icons.edit_outlined),
-                        onPressed: () {
-                          print("Editar ${location[index]["name"]}");
-                        },
+
+                      // 🔹 Botón de edición con fondo gris redondo
+                      Container(
+                        
+                        child: IconButton(
+                          icon: const Icon(
+                            Icons.edit_document,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {
+                            print("Editar ${location[index]["name"]}");
+                          },
+                        ),
                       ),
                     ],
                   ),
@@ -212,7 +223,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             Text(
                               pay[index]["number"],
                               style: TextStyle(
-                                color: const Color.fromARGB(255, 185, 185, 185),
+                                color:  Color.fromARGB(255, 172, 172, 172),
                               ),
                             ),
                           ],
@@ -250,14 +261,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             Navigator.pushNamed(context, "/checkout");
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.orange,
+            backgroundColor: Colors.amber,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
             minimumSize: const Size(double.infinity, 50),
           ),
           child: const Text(
-            "Pay Order",
+            "Pay",
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
