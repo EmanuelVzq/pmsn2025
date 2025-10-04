@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pmsn2025/database/movies_database.dart';
+import 'package:pmsn2025/models/movie_dao.dart';
 
 class AddMovieScreen extends StatefulWidget {
   const AddMovieScreen({super.key});
@@ -25,6 +26,16 @@ class _AddMovieScreenState extends State<AddMovieScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    MovieDao? objM;
+    if(ModalRoute.of(context)!.settings.arguments !=null){
+      objM=ModalRoute.of(context)!.settings.arguments as MovieDao;
+      conTitle.text = objM.nameMovie!;
+      conTime.text = objM.time!;
+      conRelease.text = objM.dateRelease!;
+    }
+    //extraemos los argumentos por parametros mediante una ruta nombrada
+
     final txtTitle = TextFormField(
       controller: conTitle,
       decoration: const InputDecoration(hintText: 'Título de la película'),
@@ -44,13 +55,23 @@ class _AddMovieScreenState extends State<AddMovieScreen> {
 
     final btnGuardar = ElevatedButton(
       onPressed: () {
-        if (conTitle.text.isNotEmpty && conTime.text.isNotEmpty) {
+        if (objM == null) {
           movieDB!.INSERT("tblMovies", {
             "nameMovie": conTitle.text,
             "time": conTime.text,
             "dateRelease": conRelease.text,
           }).then((value) => Navigator.pop(context));
         } else {
+          movieDB!.UPDATE(
+            "tblMovies",
+            {
+              "idMovie": objM.idMovie,
+              "nameMovie" : conTitle.text,
+              "time" : conTime.text,
+              "dateRelease" : conRelease.text,
+            }
+            
+          ).then((value) => Navigator.pop(context));
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text("Todos los campos son obligatorios")),
           );

@@ -56,7 +56,8 @@ class _ListMoviesState extends State<ListMovies> {
                               Row(
                                 children: [
                                   IconButton(
-                                    onPressed: (){}, 
+                                    onPressed: ()=>Navigator.pushNamed(context, "/add",arguments: objM).then((value) => setState((){}),),
+                                    //para mandar datos entre pantallas se utiliza arguments 
                                     icon: Icon(Icons.edit)
                                   ),
                                   Expanded(child: Container()),
@@ -64,7 +65,7 @@ class _ListMoviesState extends State<ListMovies> {
                                   onPressed: () async{
                                     return showDialog(
                                       context: context, 
-                                      builder: (context) => _buildAlertDialog(),
+                                      builder: (context) => _buildAlertDialog(objM.idMovie!),
                                     );
                                   }, 
                                   icon: Icon(Icons.delete))
@@ -90,13 +91,26 @@ class _ListMoviesState extends State<ListMovies> {
     );
   }
 
-  Widget _buildAlertDialog(){
+  Widget _buildAlertDialog(int idMovie){
     return AlertDialog(
       title: Text('Atencion'),
       content: Text('¿Deseas eliminar el registro?'),
       actions: [
         TextButton(
-          onPressed: (){}, 
+          onPressed: (){
+            moviesDB!.DELETE("tblMovies", idMovie).then((value) {
+                final msj;
+              if(value > 0){
+                msj = "Registro borrado exitosamente";
+                setState(() {});
+              } else {
+                msj = "No se elimino el registro";
+              }
+              final snackBar = SnackBar(content: Text(msj));
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              Navigator.pop(context);
+            },);
+          }, 
           child: Text('Aceptar')
         ),
         TextButton(
