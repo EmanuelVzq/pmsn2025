@@ -1,4 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:pmsn2025/firebase_options.dart';
 import 'package:pmsn2025/screens/add_movie_screen.dart';
 import 'package:pmsn2025/screens/challenge_detail.dart';
 import 'package:pmsn2025/screens/challenge_screen.dart';
@@ -13,7 +15,13 @@ import 'package:pmsn2025/screens/shopping_cart_screen.dart';
 import 'package:pmsn2025/utils/theme_app.dart';
 import 'package:pmsn2025/utils/value_listener.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

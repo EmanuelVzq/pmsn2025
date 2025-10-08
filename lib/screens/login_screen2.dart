@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:pmsn2025/firebase/firebase_auth.dart';
 import 'package:pmsn2025/screens/home_screen.dart';
 
 class LoginScreen2 extends StatefulWidget {
@@ -14,9 +15,14 @@ class _LoginScreen2State extends State<LoginScreen2> {
   TextEditingController conUser = TextEditingController();
   TextEditingController conEmail = TextEditingController();
   TextEditingController conPwd = TextEditingController();
-
+  FireAuth? fireAuth;
   File? _image;
   final ImagePicker _picker = ImagePicker();
+  @override
+  void initState() {
+    super.initState();
+    fireAuth = FireAuth();
+  }
 
   Future<void> _pickImage(ImageSource source) async {
     final pickedFile = await _picker.pickImage(source: source);
@@ -172,6 +178,21 @@ class _LoginScreen2State extends State<LoginScreen2> {
                 width: MediaQuery.of(context).size.width * 0.35,
                 child: ElevatedButton(
                   onPressed: () {
+
+                    fireAuth!.registrerWithEmailAndPassword(
+                      conEmail.text, conPwd.text).then(
+                        (user){
+                          if(user != null){
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text("Registro exitoso"),
+                                backgroundColor: Colors.amber,
+                              )
+                            );
+                          }
+                        }
+                      );
+
                     String user = conUser.text.trim();
                     String email = conEmail.text.trim();
                     String pwd = conPwd.text.trim();
