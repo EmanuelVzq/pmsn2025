@@ -5,6 +5,7 @@ import 'package:pmsn2025/screens/add_movie_screen.dart';
 import 'package:pmsn2025/screens/challenge_detail.dart';
 import 'package:pmsn2025/screens/challenge_screen.dart';
 import 'package:pmsn2025/screens/checkout_screen.dart';
+import 'package:pmsn2025/screens/food_historial.dart';
 import 'package:pmsn2025/screens/home_screen.dart';
 import 'package:pmsn2025/screens/home_screen_food.dart';
 import 'package:pmsn2025/screens/home_screen_food2.dart';
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
             "/add": (context) => AddMovieScreen(),
             "/cart": (context) => ShoppingCartScreen(),
             "/checkout": (context) => CheckoutScreen(),
-
+            "/historial": (context) => FoodHistorial(),
           
           },
           title: 'Material App',

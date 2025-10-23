@@ -121,10 +121,9 @@ class _HomeScreenFoodState extends State<HomeScreenFood> {
                                 children: [
                                   TextSpan(
                                     text:
-                                        page["title"]!
+                                        "${page["title"]!
                                             .replaceAll(page["highlight"]!, "")
-                                            .trimRight() +
-                                        " ",
+                                            .trimRight()} ",
                                   ),
                                   TextSpan(
                                     text: page["highlight"]!,

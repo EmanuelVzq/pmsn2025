@@ -99,7 +99,7 @@ class _ListMoviesState extends State<ListMovies> {
         TextButton(
           onPressed: (){
             moviesDB!.DELETE("tblMovies", idMovie).then((value) {
-                final msj;
+                final String msj;
               if(value > 0){
                 msj = "Registro borrado exitosamente";
                 setState(() {});

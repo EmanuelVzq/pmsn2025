@@ -30,5 +30,6 @@ class FireAuth {
         } catch (e){
           print(e.toString());
         }
+        return null;
       } 
 }

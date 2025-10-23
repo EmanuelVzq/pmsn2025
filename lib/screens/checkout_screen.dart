@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pmsn2025/database/food_database.dart';
+import 'package:pmsn2025/models/cart.dart';
 
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});
@@ -148,7 +150,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
                       // 🔹 Botón de edición con fondo gris redondo
                       Container(
-                        
                         child: IconButton(
                           icon: const Icon(
                             Icons.edit_document,
@@ -223,7 +224,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             Text(
                               pay[index]["number"],
                               style: TextStyle(
-                                color:  Color.fromARGB(255, 172, 172, 172),
+                                color: Color.fromARGB(255, 172, 172, 172),
                               ),
                             ),
                           ],
@@ -232,10 +233,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       Radio<int>(
                         value: index,
                         groupValue: selectedPay, // o selectedPay según la lista
-                        fillColor: MaterialStateProperty.resolveWith<Color>((
+                        fillColor: WidgetStateProperty.resolveWith<Color>((
                           states,
                         ) {
-                          if (states.contains(MaterialState.selected)) {
+                          if (states.contains(WidgetState.selected)) {
                             return Colors.orange; // Activo → círculo naranja
                           }
                           return Colors.grey; // Inactivo → círculo gris
@@ -257,7 +258,73 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(15.0),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () async {
+            if (GlobalCart.carrito.isEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("El carrito está vacío")),
+              );
+              return;
+            }
+
+            final db = FoodDatabase();
+
+            // ✅ Calcular subtotal y total con seguridad contra nulls
+            double subtotal = GlobalCart.carrito.fold(
+              0.0,
+              (sum, e) => sum + ((e["price"] ?? 0.0) * (e["cantidad"] ?? 1)),
+            );
+
+            double shipping = 10.00;
+            double total = subtotal + shipping;
+
+            // ✅ Insertar compra
+            int idCompra = await db.insertCompra({
+              "fecha": DateTime.now().toIso8601String(),
+              "total": total,
+            }, GlobalCart.carrito);
+
+            // ✅ Vaciar carrito
+            GlobalCart.carrito.clear();
+
+            // ✅ Consultar detalles insertados
+            final detalles = await db.selectDetalles(idCompra);
+
+            // ✅ Mostrar alerta de confirmación
+            showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: const Text("Compra realizada exitosamente"),
+                  content: SizedBox(
+                    width: double.maxFinite,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: detalles.length,
+                      itemBuilder: (context, index) {
+                        final d = detalles[index];
+                        return ListTile(
+                          leading: const Icon(
+                            Icons.fastfood,
+                            color: Colors.orange,
+                          ),
+                          title: Text(d.producto ?? "Producto"),
+                          subtitle: Text(
+                            "Cant: ${d.cantidad}  |  Precio: \$${d.precio?.toStringAsFixed(2) ?? '0.00'}",
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text("Cerrar"),
+                    ),
+                  ],
+                );
+              },
+            );
+          },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.amber,
             shape: RoundedRectangleBorder(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pmsn2025/models/cart.dart';
 
 class HomeScreenFood2 extends StatefulWidget {
   const HomeScreenFood2({super.key});
@@ -23,23 +24,20 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
       "calories": "88",
       "price": "10.00",
     },
-
     {
-      "name": "Mexican Burguer",
+      "name": "Mexican Burger",
       "description": "Mexican style",
       "image": "assets/mexican_burger.jpg",
       "calories": "88",
       "price": "10.00",
     },
-
     {
       "name": "Hot Dog",
-      "description": "Chilo dog",
+      "description": "Chili dog",
       "image": "assets/chili_dog.jpg",
       "calories": "88",
       "price": "10.00",
     },
-
     {
       "name": "Ice Cream",
       "description": "Delicious ice cream",
@@ -77,7 +75,7 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
   ];
 
   int selectedIndex = 0;
-  int selectedFoodIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,9 +106,7 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                     "Inicio",
                     style: TextStyle(color: Colors.black),
                   ),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
+                  onTap: () => Navigator.pop(context),
                 ),
                 ListTile(
                   leading: const Icon(Icons.shopping_cart, color: Colors.black),
@@ -122,11 +118,22 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                     Navigator.pushNamed(context, "/cart");
                   },
                 ),
+                ListTile(
+                  leading: const Icon(Icons.history, color: Colors.black),
+                  title: const Text(
+                    "Historial de compras",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, "/historial");
+                  },
+                ),
               ],
             ),
           ),
         ),
       ),
+
       body: ListView(
         children: [
           const Padding(
@@ -168,6 +175,8 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
               ],
             ),
           ),
+
+          // 🔸 Categorías (sin corazones)
           const Padding(
             padding: EdgeInsets.all(15.0),
             child: Text(
@@ -202,55 +211,22 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                       decoration: BoxDecoration(
                         color: isSelected ? Colors.orange : Colors.white,
                         borderRadius: BorderRadius.circular(50),
-                        
                       ),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Stack(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Center(
-                                  child: Container(
-                                    width: 50,
-                                    height: 50,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      shape: BoxShape.circle,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Center(
-                                  child: Text(
-                                    categories[index]["icon"],
-                                    style: const TextStyle(fontSize: 30),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 5),
-                              Align(
-                                alignment: Alignment.bottomCenter,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(top: 60),
-                                  child: Center(
-                                    child: Text(
-                                      categories[index]["name"],
-                                      style: TextStyle(
-                                        color: isSelected
-                                            ? Colors.white
-                                            : Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                          Text(
+                            categories[index]["icon"],
+                            style: const TextStyle(fontSize: 35),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            categories[index]["name"],
+                            style: TextStyle(
+                              color: isSelected ? Colors.white : Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                            ),
                           ),
                         ],
                       ),
@@ -260,107 +236,131 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
               ),
             ),
           ),
+
+          // 🔸 Productos principales con botón corazón funcional
           Padding(
             padding: const EdgeInsets.all(15),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: List.generate(food_card.length, (index) {
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedFoodIndex = index;
-                      });
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      width: 180,
-                      padding: const EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(
-                          20,
-                        ), 
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-                            blurRadius: 8,
-                            offset: const Offset(0, 4),
+                  return Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    width: 180,
+                    padding: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.2),
+                          blurRadius: 8,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          food_card[index]["name"],
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            food_card[index]["name"],
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          food_card[index]["description"],
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Center(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Image.asset(
+                              food_card[index]["image"],
+                              width: 150,
+                              height: 100,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                          SizedBox(height: 10,),
-                          Text(
-                            food_card[index]["description"],
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.grey[600],
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.local_fire_department,
+                              color: Colors.orange,
+                              size: 18,
                             ),
-                          ),
-                          const SizedBox(height: 8),
-
-                          Center(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25)
-                              ),
-                              child: Image.asset(
-                                food_card[index]["image"],
-                                width: 150,
-                                height: 100,
-                                //fit: BoxFit.cover,
-                                
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.local_fire_department,
+                            const SizedBox(width: 4),
+                            Text(
+                              "${food_card[index]["calories"]} Calories",
+                              style: const TextStyle(
+                                fontSize: 12,
                                 color: Colors.orange,
-                                size: 18,
                               ),
-                              const SizedBox(width: 4),
-                              Text(
-                                "${food_card[index]["calories"]} Calories",
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.orange,
-                                ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "\$${food_card[index]["price"]}",
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
                               ),
-                            ],
-                          ),
-                          const SizedBox(height: 10),
+                            ),
 
-                          // Precio y botón favorito
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "\$${food_card[index]["price"]}",
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black
-                                ),
-                              ),
-                              Container(
+                            // ❤️ Botón favorito funcional
+                            GestureDetector(
+                              onTap: () {
+                                final producto = food_card[index];
+                                bool existe = GlobalCart.carrito.any(
+                                  (p) => p["name"] == producto["name"],
+                                );
+
+                                if (!existe) {
+                                  GlobalCart.carrito.add({
+                                    "name": producto["name"],
+                                    "price":
+                                        double.tryParse(producto["price"]) ??
+                                        0.0,
+                                    "cantidad": 1,
+                                    "image": producto["image"],
+                                    "calories": producto["calories"],
+                                  });
+
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        "${producto["name"]} añadido al carrito",
+                                      ),
+                                    ),
+                                  );
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        "${producto["name"]} ya está en el carrito",
+                                      ),
+                                    ),
+                                  );
+                                }
+                              },
+                              child: Container(
                                 decoration: BoxDecoration(
                                   color: Colors.amber,
-                                  borderRadius: BorderRadius.circular(10)
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
                                 padding: const EdgeInsets.all(8),
                                 child: const Icon(
@@ -369,16 +369,18 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                                   size: 18,
                                 ),
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   );
                 }),
               ),
             ),
           ),
+
+          // 🔸 Upcoming food
           const Padding(
             padding: EdgeInsets.all(15.0),
             child: Text(
@@ -396,10 +398,10 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-                children: List.generate(food_card.length, (index) {
+                children: List.generate(food_card2.length, (index) {
                   return Container(
                     margin: const EdgeInsets.only(right: 15),
-                    width: 200, // ancho fijo para cada tarjeta
+                    width: 200,
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -414,7 +416,6 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                     ),
                     child: Row(
                       children: [
-                        // Imagen circular
                         ClipOval(
                           child: Image.asset(
                             food_card2[index]["image"],
@@ -424,14 +425,11 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                           ),
                         ),
                         const SizedBox(width: 12),
-
-                        // Nombre, Rating y Precio
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              // Nombre
                               Text(
                                 food_card2[index]["name"],
                                 style: const TextStyle(
@@ -441,8 +439,6 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                                 ),
                               ),
                               const SizedBox(height: 4),
-
-                              // Rating
                               Row(
                                 children: [
                                   const Icon(
@@ -461,8 +457,6 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                                 ],
                               ),
                               const SizedBox(height: 6),
-
-                              // Precio
                               Text(
                                 "\$${food_card2[index]["price"]}",
                                 style: const TextStyle(
