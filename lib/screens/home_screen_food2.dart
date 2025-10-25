@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:pmsn2025/models/cart.dart';
 
@@ -9,6 +10,12 @@ class HomeScreenFood2 extends StatefulWidget {
 }
 
 class _HomeScreenFood2State extends State<HomeScreenFood2> {
+  final List<String> promoImages = [
+    "assets/pepperoni_pizza.jpeg",
+    "assets/mexican_burger.jpg",
+    "assets/chili_dog.jpg",
+  ];
+
   final List<Map<String, dynamic>> categories = [
     {"name": "Burger", "icon": "🍔"},
     {"name": "Hot Dogs", "icon": "🌭"},
@@ -90,45 +97,65 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
         child: Drawer(
           child: Container(
             color: Colors.white,
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: [
-                const DrawerHeader(
-                  decoration: BoxDecoration(color: Colors.amber),
-                  child: Text(
-                    "Menú",
-                    style: TextStyle(fontSize: 24, color: Colors.white),
-                  ),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.home, color: Colors.black),
-                  title: const Text(
-                    "Inicio",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onTap: () => Navigator.pop(context),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.shopping_cart, color: Colors.black),
-                  title: const Text(
-                    "Carrito",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onTap: () {
-                    Navigator.pushNamed(context, "/cart");
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.history, color: Colors.black),
-                  title: const Text(
-                    "Historial de compras",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onTap: () {
-                    Navigator.pushNamed(context, "/historial");
-                  },
-                ),
-              ],
+            child: StatefulBuilder(
+              builder: (context, setStateDrawer) {
+                return ListView(
+                  padding: EdgeInsets.zero,
+                  children: [
+                    const DrawerHeader(
+                      decoration: BoxDecoration(color: Colors.amber),
+                      child: Text(
+                        "Menú",
+                        style: TextStyle(fontSize: 24, color: Colors.white),
+                      ),
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.home, color: Colors.black),
+                      title: const Text(
+                        "Inicio",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      onTap: () => Navigator.pop(context),
+                    ),
+
+                    // 🔸 Carrito con Badge dinámico
+                    ListTile(
+                      leading: Badge(
+                        backgroundColor: Colors.orange,
+                        label: Text(
+                          '${GlobalCart.carrito.length}',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        child: const Icon(
+                          Icons.shopping_cart,
+                          color: Colors.black,
+                        ),
+                      ),
+                      title: const Text(
+                        "Carrito",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      onTap: () {
+                        Navigator.pushNamed(context, "/cart");
+                      },
+                    ),
+
+                    ListTile(
+                      leading: const Icon(Icons.history, color: Colors.black),
+                      title: const Text(
+                        "Historial de compras",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      onTap: () {
+                        Navigator.pushNamed(context, "/historial");
+                      },
+                    ),
+                  ],
+                );
+              },
             ),
           ),
         ),
@@ -147,6 +174,29 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: CarouselSlider(
+              options: CarouselOptions(
+                height: 180,
+                autoPlay: true,
+                enlargeCenterPage: true,
+                autoPlayInterval: const Duration(seconds: 4),
+                viewportFraction: 0.9,
+              ),
+              items: promoImages.map((img) {
+                return ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.asset(
+                    img,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: Row(
@@ -237,7 +287,6 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
             ),
           ),
 
-          // 🔸 Productos principales con botón corazón funcional
           Padding(
             padding: const EdgeInsets.all(15),
             child: SingleChildScrollView(
@@ -321,7 +370,6 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                               ),
                             ),
 
-                            // ❤️ Botón favorito funcional
                             GestureDetector(
                               onTap: () {
                                 final producto = food_card[index];
@@ -340,6 +388,9 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                                     "calories": producto["calories"],
                                   });
 
+                                  setState(
+                                    () {},
+                                  ); // 🔥 Esto actualiza la interfaz del Home
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(

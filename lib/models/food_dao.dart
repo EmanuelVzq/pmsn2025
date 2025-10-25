@@ -3,7 +3,11 @@ class CompraDao {
   String? fecha;
   double? total;
 
-  CompraDao({this.idCompra, this.fecha, this.total});
+  CompraDao({
+    this.idCompra, 
+    this.fecha, 
+    this.total
+  });
 
   factory CompraDao.fromMap(Map<String, dynamic> mapa) {
     return CompraDao(

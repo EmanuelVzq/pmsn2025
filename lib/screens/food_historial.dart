@@ -82,7 +82,6 @@ class _FoodHistorialState extends State<FoodHistorial> {
             calendarFormat: CalendarFormat.month,
             startingDayOfWeek: StartingDayOfWeek.monday,
 
-            // 🎨 Estilos visuales del calendario
             calendarStyle: const CalendarStyle(
               // Día actual (hoy)
               todayDecoration: BoxDecoration(
@@ -96,7 +95,6 @@ class _FoodHistorialState extends State<FoodHistorial> {
                 shape: BoxShape.circle,
               ),
 
-              // 🔹 Colores del texto (esto hace visibles los números)
               defaultTextStyle: TextStyle(
                 color: Colors.black,
                 fontSize: 16,
@@ -110,7 +108,6 @@ class _FoodHistorialState extends State<FoodHistorial> {
               outsideTextStyle: TextStyle(color: Colors.black26, fontSize: 15),
             ),
 
-            // 🎯 Encabezado del mes
             headerStyle: const HeaderStyle(
               titleCentered: true,
               formatButtonVisible: false,

@@ -48,6 +48,8 @@ dependencies:
   dio: ^5.9.0
   path: ^1.9.1
   table_calendar: ^3.2.0
+  carousel_slider: ^5.1.1
+  badges: ^3.1.2
   
 
 dev_dependencies:
