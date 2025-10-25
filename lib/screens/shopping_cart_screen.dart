@@ -14,7 +14,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> foodItems = GlobalCart.carrito;
 
-    // 🔢 Calcular subtotal y total dinámico
     double subtotal = foodItems.fold(
       0.0,
       (sum, item) =>
@@ -58,7 +57,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
         ],
       ),
 
-      // 🧾 Lista de productos del carrito
       body: foodItems.isEmpty
           ? const Center(
               child: Text(
@@ -117,7 +115,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                     ),
                     child: Row(
                       children: [
-                        // 🖼️ Imagen del producto
                         ClipOval(
                           child: Image.asset(
                             item["image"] ?? 'assets/placeholder.png',
@@ -136,7 +133,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                         ),
                         const SizedBox(width: 15),
 
-                        // 📄 Información del producto
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -169,7 +165,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                               ),
                               const SizedBox(height: 8),
 
-                              // 🔢 Contador de cantidad
                               Row(
                                 children: [
                                   GestureDetector(
@@ -218,7 +213,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                           ),
                         ),
 
-                        // ❤️ y precio
                         Column(
                           children: [
                             Container(
@@ -265,7 +259,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
               },
             ),
 
-      // 🧮 Bottom bar con totales
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(20),
         decoration: const BoxDecoration(

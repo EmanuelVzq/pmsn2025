@@ -118,7 +118,6 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
                       onTap: () => Navigator.pop(context),
                     ),
 
-                    // 🔸 Carrito con Badge dinámico
                     ListTile(
                       leading: Badge(
                         backgroundColor: Colors.orange,
@@ -226,7 +225,6 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
             ),
           ),
 
-          // 🔸 Categorías (sin corazones)
           const Padding(
             padding: EdgeInsets.all(15.0),
             child: Text(
@@ -390,7 +388,7 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
 
                                   setState(
                                     () {},
-                                  ); // 🔥 Esto actualiza la interfaz del Home
+                                  ); // 
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
@@ -431,7 +429,6 @@ class _HomeScreenFood2State extends State<HomeScreenFood2> {
             ),
           ),
 
-          // 🔸 Upcoming food
           const Padding(
             padding: EdgeInsets.all(15.0),
             child: Text(

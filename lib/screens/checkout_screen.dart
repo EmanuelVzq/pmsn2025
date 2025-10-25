@@ -232,18 +232,18 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       ),
                       Radio<int>(
                         value: index,
-                        groupValue: selectedPay, // o selectedPay según la lista
+                        groupValue: selectedPay, 
                         fillColor: WidgetStateProperty.resolveWith<Color>((
                           states,
                         ) {
                           if (states.contains(WidgetState.selected)) {
-                            return Colors.orange; // Activo → círculo naranja
+                            return Colors.orange;
                           }
-                          return Colors.grey; // Inactivo → círculo gris
+                          return Colors.grey; 
                         }),
                         onChanged: (value) {
                           setState(() {
-                            selectedPay = value!; // o selectedPay
+                            selectedPay = value!; 
                           });
                         },
                       ),
@@ -268,7 +268,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
             final db = FoodDatabase();
 
-            // ✅ Calcular subtotal y total con seguridad contra nulls
             double subtotal = GlobalCart.carrito.fold(
               0.0,
               (sum, e) => sum + ((e["price"] ?? 0.0) * (e["cantidad"] ?? 1)),
@@ -277,19 +276,15 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             double shipping = 10.00;
             double total = subtotal + shipping;
 
-            // ✅ Insertar compra
             int idCompra = await db.insertCompra({
               "fecha": DateTime.now().toIso8601String(),
               "total": total,
             }, GlobalCart.carrito);
 
-            // ✅ Vaciar carrito
             GlobalCart.carrito.clear();
 
-            // ✅ Consultar detalles insertados
             final detalles = await db.selectDetalles(idCompra);
 
-            // ✅ Mostrar alerta de confirmación
             showDialog(
               context: context,
               builder: (context) {

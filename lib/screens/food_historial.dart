@@ -83,13 +83,11 @@ class _FoodHistorialState extends State<FoodHistorial> {
             startingDayOfWeek: StartingDayOfWeek.monday,
 
             calendarStyle: const CalendarStyle(
-              // Día actual (hoy)
               todayDecoration: BoxDecoration(
                 color: Colors.orange,
                 shape: BoxShape.circle,
               ),
 
-              // Día seleccionado
               selectedDecoration: BoxDecoration(
                 color: Colors.amber,
                 shape: BoxShape.circle,

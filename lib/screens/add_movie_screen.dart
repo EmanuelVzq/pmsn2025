@@ -21,7 +21,7 @@ class _AddMovieScreenState extends State<AddMovieScreen> {
   void initState() {
     super.initState();
     movieDB = MoviesDatabase();
-    conRelease.text = selectedDate.toString().substring(0, 10); // fecha inicial
+    conRelease.text = selectedDate.toString().substring(0, 10); 
   }
 
   @override
